@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-lg-3">
+<div id="user-info" class="well">
+  <div class="text-center">
+      <%= link_to home_path(current_user) do %>
+  <%= image_tag current_user.avatar.url || 'avatar.jpg', class: 'avatar' %>
+<% end %><br>
+    <h5><%= link_to current_user.name, @users %></h5>
+  </div>
+  
+
+  <% if @user.location.present? %>
+    <h5>
+      
+      <%= @user.location %>
+    </h5>
+  <% end %>
+  <br>
+ </div>
+  </div>
+  <div class="col-lg-6 well">
+    <%= render 'form' %>
+  </div>
+
+<div class="col-lg-3" id="updates">
+<div id="links" class="well">
+<h5>
+   
+<p>newsfeed</p>
+</h5>
+<h5>
+<%= link_to 'Create Event', new_event_path %>
+</h5>
+<h5>
+<%= link_to "My Friends",home_myprofile_path%>
+</h5>
+<h5>
+<%= link_to "Find Friends",home_find_friends_path%>
+</h5>
+
+<h5>
+ <p>my friends</p>
+</h5>
+<h5>
+<p>search</p>
+</h5>
+<h5>
+<%= link_to 'Edit Profile', edit_user_registration_path(current_user.id) %>
+</h5>
+<h5>
+<%= link_to 'Change password', edit_user_registration_path %>
+</h5>
+</div>
+</div>
+ </div>

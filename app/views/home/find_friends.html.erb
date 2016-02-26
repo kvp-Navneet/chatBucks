@@ -1,0 +1,28 @@
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>View</th>
+    <th>Add</th>
+  </tr>
+</thead><tbody>
+<% for user in @users %>
+  <tr>
+    <td><%= user.name %></td>
+    <!--<td><button type="button"  data-toggle="modal" data-target="#myModal"><%= link_to 'view profiles', home_view_profile_path %></button></td>-->
+
+    
+<td><%= link_to 'view', home_view_profile_path %></td><td>
+<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+
+</td>
+   </tr>
+<% end %>
+</tbody>
+</table>
+
+
+
+

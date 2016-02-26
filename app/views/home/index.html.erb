@@ -1,0 +1,101 @@
+<div class="row">
+<div class="col-lg-3">
+<div id="user-info" class="well">
+<div class="text-center">
+<h4><%= image_tag(@user.avatar_url) if @user.avatar? %></h4><br>
+<h4><%= current_user.name %></h4><br>
+<h5>Email id:<%= current_user.email%></h5>
+<h5>Location:<%= current_user.location%></h5>
+<h5>Mobile no:<%= current_user.mobile%></h5>
+<h5>About you:<%= current_user.about%></h5>
+</div></div></div>
+
+<%= render 'posts/form' %>
+
+<div id="activities" class="activity">
+<div class="well">
+<p>Post activites</p>
+<hr>
+<h3> <%= current_user.name %></h3>
+<br>
+<h5><% @activity.each do |activity| %>
+<%= activity.content %><h5>
+<%= activity.created_at %><br>
+    
+<%=link_to 'Edit', edit_post_path(activity), class:'btn btn-warning btn-sm' %> 
+<%= link_to 'Destroy', activity,method: :delete, class:'btn btn-danger
+ btn-sm', data: {confirm: 'are you sure?'} %>
+ <hr>
+<% end %>
+
+  <p>Event created at <%= Date.today %></p>
+<hr>
+<h3> <%= current_user.name %></h3>
+<br>
+<h5><% @event.each do |event| %>
+<%= event.name %> <%= event.when%> <h5>
+<%= event.created_at %><br>
+    
+<%= link_to 'Destroy', event, class:'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %>
+ <hr>
+<% end %>
+
+<br> 
+
+</div>
+ 
+</div>
+
+<div class="col-lg-3" id="updates">
+<div id="links" class="well">
+<h5>
+   
+<p>newsfeed</p>
+</h5>
+<h5>
+	<%= link_to 'Create Event', new_event_path %>
+</h5>
+<h5>
+<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">check</button>
+
+</h5>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<h5>
+<%= link_to "My Friends",home_myprofile_path%>
+</h5>
+<h5>
+<%= link_to "Find Friends",home_find_friends_path%>
+</h5>
+
+<h5>
+  
+<p>my friends</p>
+</h5>
+<h5>
+<p>search</p>
+</h5>
+<h5>
+<%= link_to 'Edit Profile', edit_user_registration_path(current_user.id) %>
+</h5>
+<h5>
+<%= link_to 'Change password', edit_user_registration_path %>
+</h5>
+</div>
+</div>
+</div>
