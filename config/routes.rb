@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :events, except: [:edit, :update]
-
+  resources :events, except: [:edit, :update, :show]
+  resources :comments, only: [:create, :destroy]
   resources :posts
   resources :friendships
   devise_for :users, :controllers => { :registrations => "users/registrations" }
@@ -9,14 +9,18 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   authenticated :user do
     root to: 'home#index', as: 'home'
+    #root to:  'home#front',as: 'home'
+
   end
   unauthenticated :user do
     root 'home#front'
   end
-  get '/home/myprofile'
+  get '/home/myfriend'
   get '/home/about'
   get '/home/find_friends'
-  get '/home/view_profile'
+  get '/home/all_activites'
+  match :like, to: 'likes#create', as: :like, via: :post
+  match :unlike, to: 'likes#destroy', as: :unlike, via: :post
 
   # You can have the root of your site routed with "root"
 

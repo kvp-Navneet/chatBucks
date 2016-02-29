@@ -4,7 +4,9 @@
 	<label><%= @event.name %> </label> at <%= @event.when %>
 </p>
    
-<%#= link_to 'Destroy', event,method: :destroy, class:'btn btn-danger btn-sm', data: {confirm: 'are you sure?'} %>
+<div class="points">
+    <span class="like-count"><%= pluralize(event.cached_votes_up, 'like') %></span>
+    <span class="comment-count"><%= pluralize(event.comments_count, 'comment') %></span></div>
 <%= link_to 'Destroy',  event_path(@event),  method: :delete, data: { confirm: 'Are you sure?' } %>
 <script type="text/javascript">
 console.log($);

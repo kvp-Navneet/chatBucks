@@ -1,16 +1,11 @@
 <div class="row">
-
-  <div id="intro" class="col-lg-6">
+  <div id="intro" class="col-lg-12">
     <h1>chatBuck</h1>
     <p>chatBuck is an open source social networking app written using <%= fa_icon 'diamond' %> Ruby on Rails. You can checkout the blog <a href="#">post</a> on how
     it was developed and also the source code on <a href="#"><%= fa_icon 'github' %> Github</a>.</p>
-    <hr>
-    <a href="#" class="btn btn-warning">
-      <%= fa_icon 'fa-sign-in' %> Sign up
-    </a>
-    <a href="#" class="btn btn-primary">
-      <%= fa_icon 'fa-sign-in ' %> Sign in
-    </a>
+    <hr><div class="credentials">
+    <%= link_to 'Sign up', new_user_registration_path, class:'btn btn-success btn-lg'%>
+    <%= link_to 'Sign in', user_session_path, class:'btn btn-primary btn-lg' %></div>
   </div>
-
-</div>
+  </div></div>
+  

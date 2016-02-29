@@ -1,55 +1,52 @@
 <div class="row">
   <div class="col-lg-3">
-<div id="user-info" class="well">
+<div id="user-info" class="bg-info">
   <div class="text-center">
       <%= link_to home_path(current_user) do %>
   <%= image_tag current_user.avatar.url || 'avatar.jpg', class: 'avatar' %>
 <% end %><br>
     <h5><%= link_to current_user.name, @users %></h5>
   </div>
-  
-
   <% if @user.location.present? %>
     <h5>
-      
       <%= @user.location %>
     </h5>
   <% end %>
   <br>
  </div>
   </div>
-  <div class="col-lg-6 well">
+  <div class="col-lg-6 bg-info">
     <%= render 'form' %>
   </div>
 
-<div class="col-lg-3" id="updates">
-<div id="links" class="well">
+<div class="col-lg-3 bg-info" id="updates">
+  <div class="bg-info ">
+<h4 class="text-primary text-center">Roam around your profile</h4>
+<hr>
+</div>
+
+<div id="links" class="text-center">
 <h5>
    
-<p>newsfeed</p>
+<%= link_to 'Newsfeed', home_all_activites_path, class:'btn btn-success btn-lg control' %>
 </h5>
 <h5>
-<%= link_to 'Create Event', new_event_path %>
-</h5>
-<h5>
-<%= link_to "My Friends",home_myprofile_path%>
-</h5>
-<h5>
-<%= link_to "Find Friends",home_find_friends_path%>
+  <%= link_to 'Create Events', new_event_path, class:'btn btn-success btn-lg control' %>
 </h5>
 
 <h5>
- <p>my friends</p>
+<%= link_to "My Friends",home_myfriend_path, class:'btn btn-success btn-lg control'%>
 </h5>
 <h5>
-<p>search</p>
+<%= link_to "Search Friends",home_find_friends_path, class:'btn btn-success btn-lg control'%>
 </h5>
 <h5>
-<%= link_to 'Edit Profile', edit_user_registration_path(current_user.id) %>
+<%= link_to 'Edit Profile', edit_user_registration_path(current_user.id), class:'btn btn-success btn-lg control' %>
 </h5>
 <h5>
-<%= link_to 'Change password', edit_user_registration_path %>
+<%= link_to 'Change password', edit_user_registration_path, class:'btn btn-success btn-lg control' %>
 </h5>
 </div>
 </div>
+
  </div>

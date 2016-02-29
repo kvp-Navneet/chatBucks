@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Myapplication</title>
+  <title>ChatBucks</title>
    <!-- Latest compiled and minified CSS -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,7 +9,7 @@
   
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default  navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top">
@@ -23,8 +23,8 @@
     <div class="collapse navbar-collapse" id="navbar-top">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <div>Signed in as... <%= current_user.name %></div>
-          <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+          <div class="text-primary"> <strong><%= current_user.name %></strong></div>
+          <li><%= link_to('Sign out', destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm') %></li>
         <% else %>
           <li><a href="/home/about">About</a></li>
           <li><%= link_to 'Sign up', new_user_registration_path %></li>

@@ -16,12 +16,9 @@
     <p>
       As stated above it's a Ruby on Rails application. Frontend is developed using Twitter Bootstrap. Database is Postgresql  for development and  production.
     </p>
-    <br>
-    <a href="#" class="btn btn-warning">
-       Sign up
-    </a>
-    <a href="#" class="btn btn-primary">
-       Sign in
-    </a>
+    <br><div class="credentials">
+    <%= link_to 'Sign up', new_user_registration_path, class:'btn btn-success btn-lg'%>
+   
+    <%= link_to 'Sign in', user_session_path, class:'btn btn-primary btn-lg' %></div>
   </div>
 </div>

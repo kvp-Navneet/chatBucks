@@ -3,4 +3,46 @@
 	<strong>content:</strong>
 	<%= @post.content %>
 </p>
+
 <%=link_to 'Edit Post',edit_post_path(@post)%>
+ <div class="points">
+    <span class="like-count"><%= pluralize(post.cached_votes_up, 'like') %></span>
+    <span class="comments-count"><%= pluralize(post.comments_count, 'comment') %></span>
+    <div class="pull-right">
+      <% if belongs_to_user?(post) %>
+        <%= link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do %>
+          <% fa_icon 'pencil' %>
+        <% end %>
+        <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: remote do %>
+          <% fa_icon 'trash' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% if user_signed_in? %>
+  <div class="actions">
+    <div class="row">
+      <div class="col-xs-6 like">
+        <% if current_user.liked? likeable %>
+  <%= form_tag unlike_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), method: :post, remote: true do %>
+    <% button_tag class: 'btn btn-block liked' do %>
+      <%= fa_icon 'thumbs-up' %> unlike
+    <% end %>
+  <% end %>
+<% else %>
+  <%= form_tag like_path(likeable_type: likeable.class.to_s, likeable_id: likeable.id), remote: true do %>
+    <% button_tag class: 'btn btn-block' do %>
+      <%= fa_icon 'thumbs-up' %> like
+    <% end %>
+  <% end %>
+<% end %>
+      </div>
+      <div class="col-xs-6 comment">
+        <%= link_to resource, class: 'btn btn-block' do %>
+          <%= fa_icon 'comment' %> comment
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

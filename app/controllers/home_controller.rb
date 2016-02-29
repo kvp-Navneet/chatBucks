@@ -5,8 +5,9 @@ class HomeController < ApplicationController
   respond_to :html, :js
   def index
     @post = Post.new
-    @activity = Post.where(:user_id => current_user.id)
+    @activity = Post.where(:user_id => current_user.id).order(created_at: :desc)
     @event = Event.where(:user_id => current_user.id)
+    @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc)
   end
   def find_friends
    @users= User.where.not(:id=>current_user.id)
@@ -16,13 +17,11 @@ class HomeController < ApplicationController
 
   def front
     
+  def all_activites
+   @activities = PublicActivity::Activity.order(created_at: :desc)
   end
-  
-  def view_profile
-   viewprofile=current_user.id
-   @users = User.where.not(id:viewprofile)
   end 
-  def myprofile
+  def myfriend
    @user = current_user
   end
   private
