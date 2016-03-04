@@ -121,11 +121,10 @@ $.fn.pageMe = function(opts){
 $(document).ready(function(){
     
   $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:4});
+
+  $('.comment-reply').on("click", function(){
+    $(this).closest('.comment').find('.reply-form').toggle();
+    return
+  });
     
 });
-
-$ ->
-  $('.comment-reply').click ->
-    $(this).closest('.comment').find('.reply-form').toggle()
-    return
-
