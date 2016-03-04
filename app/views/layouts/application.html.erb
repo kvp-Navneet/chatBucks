@@ -25,7 +25,7 @@
             <ul class="dropdown-menu">
               <li><a href="#"><%= link_to 'My Profile', home_path %></a></li>
               <li><a href="#"><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></a></li>
-              <li><a href="#"><%= link_to 'Edit Profile', users_registrations_edit_path(current_user.id) %></a>
+              <li><a href="#"><%= link_to 'Edit Profile', edit_user_registration_path %></a>
               </li>
               <li><a href="#"><%= link_to 'password settings', edit_user_registration_path %></a></li>
             </ul>

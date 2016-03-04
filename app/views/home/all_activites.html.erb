@@ -19,8 +19,8 @@
            <%= activities.get_downvotes.size %>
            <% end %>
            <% @comments=Post.find(activities.id).comments %>
-           <p><strong>comments:</strong></p>
-           <%= render partial: "comments/template", locals: {commentable: activities, new_comment: @comment} %><br>
+           <%=link_to 'Comment', post_path(activities), class:'btn btn-warning btn-sm' %>
+           <%#= render partial: "comments/template", locals: {commentable: activities, new_comment: @comment} %><br>
            <hr>
          <% end %>
         </div>

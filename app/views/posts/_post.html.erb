@@ -14,18 +14,6 @@
   <%= fa_icon 'clock-o' %>created at
   <%= post.created_at %> 
 </div>
-  <div class="points">
-    <span class="like-count"><%= pluralize(post.cached_votes_up, 'like') %></span>
-    <span class="comments-count"><%= pluralize(post.comments_count, 'comment') %></span>
-    <div class="pull-right">
-        <%= link_to edit_post_path(post), class: 'btn btn-primary btn-sm' do %>
-          <% fa_icon 'pencil' %>
-        <% end %>
-        <%= link_to post_path(post), method: :delete, class:'btn btn-danger btn-sm', remote: remote do %>
-          <% fa_icon 'trash' %>
-        <% end %>
-      </div>
-  </div>
 </div>
 <% if user_signed_in? %>
   <div class="actions">

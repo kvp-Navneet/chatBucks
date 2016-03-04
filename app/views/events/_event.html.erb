@@ -16,8 +16,8 @@
           <% end %>
         <% end %>
       </div>
-      <% if user_signed_in? %>
-  <div class="actions">
+     <% if user_signed_in? %>
+    <div class="actions">
     <div class="row">
       <div class="col-xs-6 like">
         <%= link_to like_event_path(event), method: :put do %><%= fa_icon 'thumbs-up' %>

@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:about,:front]
   before_action :set_user, except: :front
-
   respond_to :html, :js
   def index
     @post = Post.new

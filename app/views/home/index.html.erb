@@ -68,21 +68,27 @@
     <h4 class="text-center" >Post activites</h4></div>
     <div class="well">
       <br>
-        <% @activities.each do |activity| %>
-        <h3> <%= current_user.name %></h3>
-        <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
-        <%= activity.created_at %><br><br>
-        <%= link_to like_post_path(activity), method: :put do %><%= fa_icon 'thumbs-up' %>
-        <%= activity.get_upvotes.size %>
+      <% @activities.each do |activity| %>
+      <h3> <%= current_user.name %></h3>
+      <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
+      <%= activity.created_at %><br><br>
+      <%= link_to like_post_path(activity), method: :put do %><%= fa_icon 'thumbs-up' %>
+      <%= activity.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_post_path(activity), method: :put do %>
+      <%= fa_icon 'thumbs-down' %>
+      <%= activity.get_downvotes.size %>
+      <% end %>
+      <%=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> 
+      <div class="pull-right">
+        <%= link_to edit_post_path(activity), class: 'btn btn-primary btn-sm' do %>
+        <% fa_icon 'pencil' %>
         <% end %>
-        <%= link_to dislike_post_path(activity), method: :put do %>
-        <%= fa_icon 'thumbs-down' %>
-        <%= activity.get_downvotes.size %>
-        <% end %>
-        <%=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> <hr>
-        <% end %>
-        <br> 
-      </div>
+        <%= link_to 'Destroy', activity,class:'btn btn-danger btn-sm fa fa-trash-o', method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% fa_icon 'trash' %>
+      </div><hr>
+      <% end %>
+      <br> 
     </div>
+  </div>
 </div>
-  
