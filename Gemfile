@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
@@ -21,15 +21,21 @@ gem 'font-awesome-rails'
 gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 gem 'will_paginate', '~> 3.0.6'
 gem 'public_activity'
 gem 'carrierwave'
-gem 'acts_as_votable', '~> 0.10.0'
 gem "mini_magick"
 gem "twitter-bootstrap-rails"
-
+gem 'auto_html'
+gem "letter_opener", :group => :development
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'acts_as_commentable_with_threading'  
+gem 'acts_as_votable', '~> 0.10.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -44,9 +50,9 @@ gem 'counter_culture', '~> 0.1.33'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'acts_as_commentable'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 3.0'
   gem 'byebug'
 end
 
@@ -56,5 +62,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'pry-rails'
 end
+
 

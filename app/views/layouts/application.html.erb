@@ -2,43 +2,47 @@
 <html>
 <head>
   <title>ChatBucks</title>
-   <!-- Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default  navbar-fixed-top">
-  <div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top">
+   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-top">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <%= link_to "ChatBucks", root_url, class: "navbar-brand" %>
     </div>
     <div class="collapse navbar-collapse" id="navbar-top">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <div class="text-primary"> <strong><%= current_user.name %></strong></div>
-          <li><%= link_to('Sign out', destroy_user_session_path, method: :delete, class:'btn btn-danger btn-sm') %></li>
-        <% else %>
+        <li><%= link_to 'Newsfeed', home_all_activites_path %></li>
+        <li class=" text-primary dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong><%= current_user.name %></strong>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><%= link_to 'My Profile', home_path %></a></li>
+              <li><a href="#"><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></a></li>
+              <li><a href="#"><%= link_to 'Edit Profile', users_registrations_edit_path(current_user.id) %></a>
+              </li>
+              <li><a href="#"><%= link_to 'password settings', edit_user_registration_path %></a></li>
+            </ul>
+          </li>
+          <% else %>
           <li><a href="/home/about">About</a></li>
           <li><%= link_to 'Sign up', new_user_registration_path %></li>
           <li><%= link_to 'Sign in', user_session_path %></li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <div class="edit-form"> 
   </div>
-</nav>
-<div> </div>
-<br>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
-
+  <h4 class="notice text-danger"><%= notice %></h4>
+  <h4 class="alert text-danger"><%= alert %></h4> 
+  <%= yield %>
 </body>
 </html>

@@ -1,13 +1,35 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<strong>Event title:</strong>
-	<label><%= @event.name %> </label> at <%= @event.when %>
-</p>
-   
-<div class="points">
+<div class="info">
+  <h4 class="name"><%= event.user.name %></h4>
+  <span class="action">created an <%= link_to 'event', event %></span>
+</div>
+<div class="content">
+  <h3><%= event.name %></h3>
+  <span class="text">
+    <%= fa_icon'calendar' %> <%= event.when %>
+  </span><br>created at:<%= event.created_at %> 
+  <div class="points">
     <span class="like-count"><%= pluralize(event.cached_votes_up, 'like') %></span>
-    <span class="comment-count"><%= pluralize(event.comments_count, 'comment') %></span></div>
-<%= link_to 'Destroy',  event_path(@event),  method: :delete, data: { confirm: 'Are you sure?' } %>
-<script type="text/javascript">
-console.log($);
-</script>
+    <div class="pull-right">
+      <%= form_tag event_path(event), method: :delete, remote: remote do %>
+          <% button_tag class: 'btn btn-danger btn-sm' do %>
+            <%= fa_icon 'trash' %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+  <div class="actions">
+    <div class="row">
+      <div class="col-xs-6 like">
+        <%= link_to like_event_path(event), method: :put do %><%= fa_icon 'thumbs-up' %>
+        <%= event.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_post_path(event), method: :put do %>
+        <%= fa_icon 'thumbs-down' %>
+        <%= event.get_downvotes.size %>
+        <% end %>
+      </div>
+      </div>
+  </div>
+<% end %>
+  </div>
+</div>

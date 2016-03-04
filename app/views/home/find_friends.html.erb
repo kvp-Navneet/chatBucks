@@ -1,38 +1,35 @@
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
- 
 <div class="container">
   <div class="row">
-      <div class="table-responsive">
-        <table class="table table-hover">
-           <caption class="bg-primary">Available Members</caption>
-          <thead>
-            <tr class="warning">
-            <th>Name</th>
-            <th>Location</th>
-             <th>Add as Friend</th>
-            </tr>
-          </thead>
-          <tbody id="myTable">
-            <% for user in @users %>
-            <tr class="success">
-              <td><%= user.name %></td>
-              <td><%= user.location %></td>
-              <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post,class:'btn btn-danger btn-sm' %></td>
-            </tr>
-            <% end %>
-            </tbody>
-        </table>   
-        </div>
-       <div class="col-md-12 text-center">
-         
-      <ul class="pagination pagination-lg pager margins" id="myPager"></ul>
-      </div>
+    <div class="table-responsive">
+      <table class="table table-hover" id="myTable">
+       <caption>Available Members</caption>
+       <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Add as Friend</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <% for user in @users %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.location %></td>
+          <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post,class:'btn btn-primary btn-sm' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table> 
   </div>
+  
+</div>
 
 <%= link_to 'Back', home_path ,class:'btn btn-warning btn-sm' %>
 </div>
-
-
+<script>
+$(document).ready(function(){
+  $('#myTable').DataTable();
+});
+</script>
 
 

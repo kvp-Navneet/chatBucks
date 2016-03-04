@@ -5,8 +5,8 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to home_myfriend_path
    else
-      flash[:error] = "Already in your list."
-      redirect_to home_myfriend_path
+      flash[:alert] = "Already in your list."
+      redirect_to home_find_friends_path
     end
   end
   
@@ -17,4 +17,4 @@ class FriendshipsController < ApplicationController
     redirect_to home_myfriend_path
   end
  
- end
+end

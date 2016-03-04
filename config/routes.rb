@@ -1,10 +1,24 @@
 Rails.application.routes.draw do
-  resources :events, except: [:edit, :update, :show]
-  resources :comments, only: [:create, :destroy]
-  resources :posts
+  resources :events do 
+  member do
+    put "like", to: "events#upvote"
+    put "dislike", to: "events#downvote"
+  end
+end
+  resources :comments 
+  resources :posts do 
+  member do
+    put "like", to: "posts#upvote"
+    put "dislike", to: "posts#downvote"
+  end
+end
   resources :friendships
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks',  registrations: "users" }
+    get '/users/registrations/edit'
+  #:controllers => { :registrations => "users/registrations" }
   
+  # :controllers => { :registrations => "users/registrations" }
+   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   authenticated :user do
@@ -15,12 +29,15 @@ Rails.application.routes.draw do
   unauthenticated :user do
     root 'home#front'
   end
+
   get '/home/myfriend'
   get '/home/about'
   get '/home/find_friends'
   get '/home/all_activites'
-  match :like, to: 'likes#create', as: :like, via: :post
-  match :unlike, to: 'likes#destroy', as: :unlike, via: :post
+  get '/posts/:post_id/comments' =>"comments#new", as: :post_comment
+  
+  #match :like, to: 'likes#create', as: :like, via: :post
+  #match :unlike, to: 'likes#destroy', as: :unlike, via: :post
 
   # You can have the root of your site routed with "root"
 

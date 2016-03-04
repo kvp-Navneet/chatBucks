@@ -1,12 +1,19 @@
 class Post < ActiveRecord::Base
+  acts_as_commentable
+  acts_as_votable
   belongs_to :user
   has_many :comments, as: :commentable
   counter_culture :user
-  acts_as_votable
-  acts_as_commentable
   mount_uploader :attachment, AvatarUploader
   validates_presence_of :content
   validates_presence_of :user
-  include PublicActivity::Model
-  tracked only: [:create, :like], owner: Proc.new{ |controller, model| model.user }
+  auto_html_for :content do
+    html_escape
+    image
+    youtube(width: 400, height: 250, autoplay: true)
+    link target: '_blank', rel: 'nofollow'
+    simple_format
+ end
+
+
 end

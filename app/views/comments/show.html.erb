@@ -1,0 +1,5 @@
+<p>
+	<strong>comment:</strong>
+	<label><%= @comment.body %> </label> at <%= Date.today %>
+</p>
+<%= link_to 'Destroy',  comment_path(@comment),  method: :delete, data: { confirm: 'Are you sure?' } %>

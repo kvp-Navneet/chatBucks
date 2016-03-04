@@ -9,15 +9,13 @@
       <h5>About you:<%= current_user.about%></h5>
 </div>
 <div class="credential">
-<button type="button" class="btn btn-success btn-lg " data-toggle="modal" data-target="#myModal">view your friends profile</button>
-      
-<%= link_to "Search Friends",home_find_friends_path, class:'btn btn-success btn-lg control'%></div>
-
-  </div>
-  <div id="myModal" class="modal fade" role="dialog">
+ <button type="button" class="btn btn-success btn-lg " data-toggle="modal" data-target="#myModal">view your friends profile</button>
+       
+<%= link_to "Search Friends",home_find_friends_path, class:'btn btn-success btn-lg control'%>
+</div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -25,17 +23,15 @@
        </div>
        <div class="modal-body">
        <h4 class="text-primary text-center ">Profile Information </h4>
-
-      <div class="text-center">
+       <div class="text-center">
         <% for friendship in @user.friendships(:friend_id => params[:friend_id]) %>
-        <hr>
+      <hr>
       <h4><%= image_tag(friendship.friend.avatar_url) if friendship.friend.avatar? %></h4><br>
       <h4><%= friendship.friend.name %></h4><br>
       <h5>Email id:<%= friendship.friend.email%></h5>
       <h5>Location:<%= friendship.friend.location%></h5>
       <h5>Mobile no:<%= friendship.friend.mobile%></h5>
       <h5>About you:<%= friendship.friend.about%></h5>
-      <h5>About you:<%= friendship.friend.posts%></h5>
       <%= link_to "remove", friendship, :method => :delete,class:'btn btn-danger btn-sm' %>
       <hr>
       <% end %>
@@ -45,13 +41,10 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
+ </div>
 </div>
-
-
-</div>
-<h1>You are in circle of</h1>
+ <h1>You are in circle of</h1>
 <div class="container">
   <div class="row">
       <div class="table-responsive">
@@ -75,9 +68,8 @@
             </tbody>
         </table>   
         </div>
-       <div class="col-md-12 text-center">
-         
-      <ul class="pagination pagination-lg pager control" id="myPager"></ul>
-      </div>
+      <div class="col-md-12 text-center">
+    <ul class="pagination pagination-lg pager control" id="myPager"></ul>
   </div>
+</div>
 

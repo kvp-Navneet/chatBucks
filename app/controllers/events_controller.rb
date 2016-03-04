@@ -17,8 +17,8 @@ class EventsController < ApplicationController
   end
 
   def show
-  
-
+    @event = Event.find(params[:id])
+    @new_comment = Comment.build_from(@event, current_user.id, "")
   end
 
   def destroy
@@ -28,7 +28,17 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def upvote 
+   @event = Event.find(params[:id])
+   @event.upvote_by current_user
+   redirect_to :back
+  end  
 
+  def downvote
+    @event = Event.find(params[:id])
+    @event.downvote_by current_user
+    redirect_to :back
+  end
    
 
   private

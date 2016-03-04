@@ -17,23 +17,38 @@
    
 
  */
- .navigation
- {
-background-color: #D9EDF7;
-
+ .comment{
+ margin:0 auto;
+  width:400px;
  }
+ .side
+ {
+
+ margin-left:15px;
+ }
+ .edit-form
+ {
+
+ 	margin-top:60px;
+ }
+ .feed
+ {
+
+ 	text-align: center;
+ }
+ 
  .credentials
  {
 
-margin-left:200px;
+ 	margin-left:70px;
  }
  .credential
  {
-margin-left:450px;
+ 	margin-left:450px;
  }
  .margin
  {
-margin-top:100px;
+ 	margin-top:100px;
 
  }
  .control
@@ -42,23 +57,50 @@ margin-top:100px;
  	margin-bottom:0px;
  	margin-top:0px;
  }
-.status
-{
-margin:0 auto;
-width:500px;
+ .status
+ {
+ 	margin:0 auto;
+ 	width:500px;
+ }
+ #updates
+ {
+ 	float:right;
+ 	margin-right: 15px;
+ }
+ .activity
+ {
+    color:black;
+ 	margin:0 auto;
+ 	width:600px;
+ }
+ .edit-profile
+ {
+ 	margin: 0 auto;
+ 	width:400px;
+ }.comments-header {
+  border-bottom: 1px dotted gray;
+  margin-bottom: 10px;
 }
-#updates
-{
-float:right;
-}
-.activity
-{
 
-margin:0 auto;
-width:600px;
+.comments-container {
+ p {
+    margin-bottom: 0px;
+  }
+  .comment-nav {
+    margin-left: 5px;
+    margin-bottom: 10px
+    a {
+      font-size: 10px;
+      font-weight: bold;
+      color: #888;
+    }
+  }
 }
-.edit-profile
-{
- margin: 0 auto;
- width:400px;
+
+.reply-form {
+  display: none;
+}
+
+.comments-show {
+  margin-left: 25px;
 }

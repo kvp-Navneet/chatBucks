@@ -1,6 +1,10 @@
-<%= form_tag comments_path(commentable_type: commentable.class.to_s, commentable_id: commentable.id), method: :post, remote: true do %>
-  <div class="form-group">
-    <%= text_area_tag :comment_text, nil, placeholder: 'Enter Comment', class: 'form-control' %>
+<%= form_for @new_comment do |f| %>  
+  <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+  <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+  <div class="field form-group">
+    <%= f.text_area :body, class: 'form-control' %>
   </div>
-  <%= submit_tag :comment, class: 'btn btn-primary' %>
-<% end %>
+  <div class="field form-group">
+    <%= submit_tag "Post comment", class: 'btn btn-primary' %>
+  </div>
+<% end %>  

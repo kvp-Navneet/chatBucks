@@ -1,13 +1,12 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, except: [:about]
+  before_action :authenticate_user!, except: [:about,:front]
   before_action :set_user, except: :front
 
   respond_to :html, :js
   def index
     @post = Post.new
-    @activity = Post.where(:user_id => current_user.id).order(created_at: :desc)
+    @activities = Post.where(:user_id => current_user.id).order(created_at: :desc)
     @event = Event.where(:user_id => current_user.id)
-    @activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc)
   end
   def find_friends
    @users= User.where.not(:id=>current_user.id)
@@ -16,11 +15,16 @@ class HomeController < ApplicationController
   end 
 
   def front
-    
-  def all_activites
-   @activities = PublicActivity::Activity.order(created_at: :desc)
   end
-  end 
+
+  def all_activites
+    @friendships = Friendship.where("user_id = ?",current_user.id).select("friend_id")
+    @activities = Post.where("user_id in (?)",@friendships)
+     # @post = Post.find_by(params[:id])
+    @activities.each do|a|
+      @new_comment = Comment.build_from(a, current_user.id, "")
+    end
+  end
   def myfriend
    @user = current_user
   end

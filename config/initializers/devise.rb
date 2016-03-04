@@ -7,7 +7,9 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '5b645bac1f878278c546a5f0bf59709a76da42f06b9de2482b84891fa05af4358bc87bec116bef13f259abe8cad1954aabfd16f182ccdfaef35181f81accf86b'
-
+  config.omniauth :facebook, "KEY", "SECRET"
+  config.omniauth :twitter, "22Atw2x8H9oQkuBruDgbxVIZa", "2adXGMdqQgnU6N8dfAYVl222NLsaIq97RWPDY6H0g8fAs9Tqir"
+  config.omniauth :linkedin, "75kw6ktygeleah", "RtrUPMw7oVFguL7i"
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -124,7 +126,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]

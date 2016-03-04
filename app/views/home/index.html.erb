@@ -1,116 +1,88 @@
 <div class="row">
-<div class="col-lg-3">
-<div class="modal-header bg-info">
-<div id="user-info" >
-
-
-<h4 class="text-primary text-center ">Profile Information </h4>
-
-<div class="text-center">
-<h4><%= image_tag(@user.avatar_url) if @user.avatar? %></h4><br>
-<h4><%= current_user.name %></h4><br>
-<h5>Email id:<%= current_user.email%></h5>
-<h5>Location:<%= current_user.location%></h5>
-<h5>Mobile no:<%= current_user.mobile%></h5>
-<h5>About you:<%= current_user.about%></h5>
-</div></div></div></div>
-<div class="col-lg-3 bg-info" id="updates">
-  <div class="bg-info ">
-<h4 class="text-primary text-center">Roam around your profile</h4>
-<hr>
-</div>
-
-<div id="links" class="text-center">
-<h5>
-   
-<%= link_to 'Newsfeed', home_all_activites_path, class:'btn btn-success btn-lg control' %>
-</h5>
-<h5>
-  <%= link_to 'Create Events', new_event_path, class:'btn btn-success btn-lg control' %>
-</h5>
-<h5>
-<button type="button" class="btn btn-success btn-lg control" data-toggle="modal" data-target="#myModal">Check Events</button>
-
-</h5>
-<div id="myModal" class="modal fade " role="dialog">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header bg-primary">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title ">Event List</h4>
-</div>
-<div class="modal-body">
-<p>Event till <%= Date.today %></p>
-<%= "Events (#{current_user.events.count})" %>
-<hr>
-<h3> <%= current_user.name %></h3>
-<br>
-<h5><% @event.each do |event| %>
-
-<%= event.name %> <%= event.when%> <h5>
-<%= event.created_at %><br>
-    
-<%= link_to 'Destroy', event, class:'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %>
- <hr>
-<% end %>
-<div class="row">
-    <div class="col-lg-6 col-lg-offset-3 well">
-      <h4>Comments</h4>
-     <hr>
-     <%= render 'comments/form', commentable: @post %><br>
-      
+  <div class="col-lg-3 side">
+   <div class="panel panel-primary">
+     <div class="panel-heading">Profile Information</div>
+     <div class="panel-body text-center">
+      <h4><%= image_tag(@user.avatar_url) if @user.avatar? %></h4><br>
+      <h4><%= current_user.name %></h4><br>
+      <h5>Email id:<%= current_user.email%></h5>
+      <h5>Location:<%= current_user.location%></h5>
+      <h5>Mobile no:<%= current_user.mobile%></h5>
+      <h5>About you:<%= current_user.about%></h5>
     </div>
   </div>
 </div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-<h5>
-<%= link_to "My Friends",home_myfriend_path, class:'btn btn-success btn-lg control'%>
+<div class="col-lg-3 col-xs-12 text-center" id="updates">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Roam Around your Profile</div>
+    <div class="panel-body">
+     <h5><%= link_to 'Create Events', new_event_path, class:'btn btn-primary btn-lg control' %></h5>
+     <h5><button type="button" class="btn btn-primary btn-lg control" data-toggle="modal" data-target="#myModal">Check Events</button></h5>
+     <div id="myModal" class="modal fade " role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title ">Event List</h4>
+          </div>
+          <div class="modal-body">
+            <p>Event till <%= Date.today %></p>
+            <%= "Events (#{current_user.events.count})" %>
+            <hr>
+            <h3> <%= current_user.name %></h3>
+            <br>
+            <h5><% @event.each do |event| %>
+             <%= event.name %> <%= event.when%> 
+           </h5>
+           <%= event.created_at %><br>
+           <%= link_to like_event_path(event), method: :put do %>
+           <%= fa_icon 'thumbs-up' %>
+           <%= event.get_upvotes.size %>
+           <% end %>
+           <%= link_to dislike_event_path(event), method: :put do %>
+           <%= fa_icon 'thumbs-down' %>
+           <%= event.get_downvotes.size %>
+           <% end %>
+           <br><%= link_to 'Destroy', event, class:'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %>
+           <hr>
+           <% end %>
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5>
+   <%= link_to "My Friends",home_myfriend_path, class:'btn btn-primary btn-lg control'%>
+ </h5>
+ <h5>
+  <%= link_to "Search Friends",home_find_friends_path, class:'btn btn-primary btn-lg control'%>
 </h5>
-<h5>
-<%= link_to "Search Friends",home_find_friends_path, class:'btn btn-success btn-lg control'%>
-</h5>
-<h5>
-<%= link_to 'Edit Profile', edit_user_registration_path(current_user.id), class:'btn btn-success btn-lg control' %>
-</h5>
-<h5>
-<%= link_to 'Change password', edit_user_registration_path, class:'btn btn-success btn-lg control' %>
-</h5>
 </div>
 </div>
-
+</div>
 <%= render 'posts/form' %>
-
-<div id="activities" class="activity bg-info">
-<div class="bg-info text-center">
-<h4 class="text-primary text-center" >Post activites</h4></div>
-<hr>
-<div class="well">
-
-<h3> <%= current_user.name %></h3>
-<br>
-<h5><% @activity.each do |activity| %>
-<%= activity.content %><%= image_tag(activity.attachment_url) if activity.attachment? %><h5>
-<%= activity.created_at %><br>
-    <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 well">
-      <h4>Comments</h4>
-     <hr>
-     <%= render 'comments/form', commentable: @post %><br>
-      
+<div id="activities" class="activity bg-primary">
+  <div class="bg-primary text-center"><hr>
+    <h4 class="text-center" >Post activites</h4></div>
+    <div class="well">
+      <br>
+        <% @activities.each do |activity| %>
+        <h3> <%= current_user.name %></h3>
+        <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
+        <%= activity.created_at %><br><br>
+        <%= link_to like_post_path(activity), method: :put do %><%= fa_icon 'thumbs-up' %>
+        <%= activity.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_post_path(activity), method: :put do %>
+        <%= fa_icon 'thumbs-down' %>
+        <%= activity.get_downvotes.size %>
+        <% end %>
+        <%=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> <hr>
+        <% end %>
+        <br> 
+      </div>
     </div>
-  </div>
-<%=link_to 'Edit', edit_post_path(activity), class:'btn btn-warning btn-sm' %> 
-<%= link_to 'Destroy', activity,method: :delete, class:'btn btn-danger btn-sm', data: {confirm: 'are you sure?'} %>
- <hr>
-<% end %>
-
-<br> 
 </div>
-</div>
-
-</div>
+  
