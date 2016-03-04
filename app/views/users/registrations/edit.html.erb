@@ -19,7 +19,7 @@
   </div><div class="field">
   <label>Gender:<%= f.select :gender, %w{Male Female}, :prompt => 'Select', required: true, placeholder: 'Gender', class: 'form-control' %></label></div>
   <div class="field">
-  <label>Profession:<%= f.select :profession, %w{Employee Studnet}, :prompt => 'Select', required: true, placeholder: 'Profession', class: 'form-control' %></label></div>
+  <label>Profession:<%= f.select :profession, %w{Employee Student}, :prompt => 'Select', required: true, placeholder: 'Profession', class: 'form-control' %></label></div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, :class => "form-control" %>
