@@ -23,7 +23,7 @@
         <div class="modal-content">
           <div class="modal-header bg-primary">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title ">Event List</h4>
+            <h2 class="modal-title ">Event List</h2>
           </div>
           <div class="modal-body">
             <p>Event till <%= Date.today %></p>
@@ -32,9 +32,10 @@
             <h3> <%= current_user.name %></h3>
             <br>
             <h5><% @event.each do |event| %>
-             <%= event.name %> <%= event.when%> 
+             <%= event.name %> on <%= event.when%> <br>
+             created&nbsp<%= time_ago_in_words(event.created_at)  %> &nbsp ago
            </h5>
-           <%= event.created_at %><br>
+           <br>
            <%= link_to like_event_path(event), method: :put do %>
            <%= fa_icon 'thumbs-up' %>
            <%= event.get_upvotes.size %>
@@ -63,32 +64,32 @@
 </div>
 </div>
 <%= render 'posts/form' %>
-<div id="activities" class="activity bg-primary">
+<div class="post bg-primary">
   <div class="bg-primary text-center"><hr>
-    <h4 class="text-center" >Post activites</h4></div>
-    <div class="well">
+    <h2 class="text-center" >Post activites</h2></div>
+    <div class="well" id="activities">
       <br>
       <% @activities.each do |activity| %>
       <h3> <%= current_user.name %></h3>
       <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
-      <%= activity.created_at %><br><br>
+      created&nbsp<%= time_ago_in_words(activity.created_at)  %> &nbsp ago<br>
       <%= link_to like_post_path(activity), method: :put do %><%= fa_icon 'thumbs-up' %>
       <%= activity.get_upvotes.size %>
       <% end %>
       <%= link_to dislike_post_path(activity), method: :put do %>
       <%= fa_icon 'thumbs-down' %>
-      <%= activity.get_downvotes.size %>
+      <%= activity.get_downvotes.size %><br>
+       <span class="comments-count"><%= activity.comments_count%>&nbsp<%=link_to 'Comment', post_path(activity) %></span>
       <% end %>
-      <%=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> 
+      <%#=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> 
       <div class="pull-right">
-        <%= link_to edit_post_path(activity), class: 'btn btn-primary btn-sm' do %>
+        <%= link_to edit_post_path(activity), class: 'btn btn-sm' do %>
         <% fa_icon 'pencil' %>
         <% end %>
-        <%= link_to 'Destroy', activity,class:'btn btn-danger btn-sm fa fa-trash-o', method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% fa_icon 'trash' %>
-      </div><hr>
+        <%= link_to 'Delete', activity,class:'btn  btn-sm fa fa-trash-o', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
       <% end %>
-      <br> 
-    </div>
+     </div>
+    <%= will_paginate @activities %>
   </div>
 </div>

@@ -1,15 +1,15 @@
 <div class="row">
   <div id="newsfeed" class="col-lg-12 ">
     <h2 class="feed bg-primary"><%= fa_icon "newspaper-o" %>NEWSFEED</h2>
-   <div class="container text-centre" >
+   <div class="container text-centre"  >
     <% if @activities %>
-        <div class="comment  text-center">
+        <div class="comment  text-center" id="activities">
           <hr>
          <% @activities.each do |activities| %>
          <h3><%= activities.user.name %> has created</h3> 
          <%= image_tag(activities.attachment_url) if activities.attachment? %><br><%= activities.content %>
-         <h5>at
-         <%= activities.created_at %><br>
+         <h5>created
+         <%= time_ago_in_words(activities.created_at)  %> &nbsp ago<br>
          <%= link_to like_post_path(activities), method: :put do %>
            <%= fa_icon 'thumbs-up' %>
            <%= activities.get_upvotes.size %>
@@ -17,9 +17,9 @@
            <%= link_to dislike_post_path(activities), method: :put do %>
            <%= fa_icon 'thumbs-down' %>
            <%= activities.get_downvotes.size %>
-           <% end %>
+           <% end %><br>
            <% @comments=Post.find(activities.id).comments %>
-           <%=link_to 'Comment', post_path(activities), class:'btn btn-warning btn-sm' %>
+           <span class="comments-count"><%= activities.comments_count%>&nbsp<%=link_to 'Comment', post_path(activities) %></span>
            <%#= render partial: "comments/template", locals: {commentable: activities, new_comment: @comment} %><br>
            <hr>
          <% end %>
@@ -28,5 +28,6 @@
        <%= render('/posts/no_resource', resources: 'Activities') %>
       <% end %>
     </div>
+  <%= will_paginate @activities %>
   </div>
 </div>

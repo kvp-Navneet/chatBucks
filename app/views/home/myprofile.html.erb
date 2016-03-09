@@ -1,8 +1,5 @@
 <h1>My Profile</h1>
-
 <p>Username: <%=h @user.name %></p>
-
-
 <h2>Friends</h2>
 <ul>
   <% for friendship in @user.friendships %>
@@ -12,9 +9,7 @@
     </li>
   <% end %>
 </ul>
-
 <p><%= link_to "Find Friends", home_find_friends_path %></p>
-
 <h2>you are the friend of </h2>
 <ul>
   <% for user in @user.inverse_friends %>

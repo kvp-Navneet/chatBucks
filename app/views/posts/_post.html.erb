@@ -11,9 +11,20 @@
     </div>
   <% end %>
  <div class="created-at">
-  <%= fa_icon 'clock-o' %>created at
-  <%= post.created_at %> 
+  <%= fa_icon 'clock-o' %>created
+  <%= time_ago_in_words(post.created_at)  %> &nbsp ago
 </div>
+<div class="points">
+    <span class="comments-count"><%= post.comments_count%>&nbsp<%=link_to 'Comment', post_path(post) %></span>
+    <div class="pull-right">
+      <% if post.user_id == current_user.id %>
+          <%= link_to edit_post_path(post), class: 'btn btn-sm' do %>
+        <% fa_icon 'pencil' %>
+        <% end %>
+        <%= link_to 'Delete', post,class:'btn  btn-sm fa fa-trash-o', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <% if user_signed_in? %>
   <div class="actions">

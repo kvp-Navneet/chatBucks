@@ -1,0 +1,3 @@
+$('#activities').append("<%= escape_javascript render(@activities) %>");
+$('.pagination').replaceWith('<%= escape_javascript will_paginate(@activities) %>');
+<%#= render 'paginate', resources: @activities %>

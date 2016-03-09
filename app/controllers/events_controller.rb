@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_user
   before_action :authenticate_user!
   before_action :set_event, only: [:show, :destroy]
+  respond_to :html, :js
 
   def new
     @event = Event.new

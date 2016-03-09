@@ -15,7 +15,11 @@
         <tr>
           <td><%= user.name %></td>
           <td><%= user.location %></td>
-          <td><%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post,class:'btn btn-primary btn-sm' %></td>
+          <td><% if current_user.friends.exists?(user) %>
+                <h6>Added</h6>
+            <% else%>
+            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post,class:'btn btn-primary btn-sm' %></td>
+            <% end %>
         </tr>
         <% end %>
       </tbody>

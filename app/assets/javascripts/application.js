@@ -126,5 +126,15 @@ $(document).ready(function(){
     $(this).closest('.comment').find('.reply-form').toggle();
     return
   });
-    
+ if ($('.pagination').length) {
+    $(window).scroll(function() {
+      var url = $('.pagination .next_page').attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        $('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />');
+        
+        return $.getScript(url);
+    }
+    });
+    return $(window).scroll();
+  }
 });

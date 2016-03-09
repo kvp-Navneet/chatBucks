@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-lg-6 col-lg-offset-3">
+		<div class="well">
+			<h3>Edit Profile</h3>
+			<%= form_for @user do |f| %>
+			<div class="field">
+				<%= f.label :avatar %><br />
+				<%= f.file_field :avatar %>
+			</div>
+			<div class="field">
+				<%= f.label :name %><br />
+				<%= f.text_field :name, autofocus: true, :class => "form-control" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :location %><br />
+				<%= f.text_field :location, autofocus: true, :id => "location",:class => "form-control" %>
+			</div><div class="field">
+			<label>Gender:<%= f.select :gender, %w{Male Female}, :prompt => 'Select', required: true, placeholder: 'Gender', class: 'form-control' %></label></div>
+			<div class="field">
+				<label>Profession:<%= f.select :profession, %w{Employee Student}, :prompt => 'Select', required: true, placeholder: 'Profession', class: 'form-control' %></label></div>
+				<div class="field">
+					<%= f.label :email %><br />
+					<%= f.email_field :email, autofocus: true, :class => "form-control" %>
+				</div>
+				<div class="field">
+					<%= f.label :dob %><br />
+					<%= f.date_select :dob, autofocus: true , :id => "datepicker",  :start_year=>1970,:end_year=>2016%>
+				</div>
+				<div class="field">
+					<%= f.label :mobile %><br />
+					<%= f.text_field :mobile, autofocus: true, :class => "form-control" %>
+				</div>
+				<div class="field">
+					<%= f.label :about_your_self %><br />
+					<%= f.text_area :about, autofocus: true, :class => "form-control" %>
+				</div>
+				<br>
+				<div class="actions">
+					<%= f.submit "Update", :class => "btn btn-primary" %>
+				</div>
+				<% end %>
+
+			</div>
+		</div>
+	</div>

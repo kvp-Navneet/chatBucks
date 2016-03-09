@@ -1,12 +1,14 @@
 class Comment < ActiveRecord::Base
-  acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+   include PublicActivity::Model
+   tracked only: [:create], owner: Proc.new{ |controller, model| model.user }
+   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   validates :body, :presence => true
   validates :user, :presence => true
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
-  #acts_as_votable
+   acts_as_votable
 
   belongs_to :commentable, :polymorphic => true, :counter_cache => true
 

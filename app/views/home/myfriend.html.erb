@@ -1,74 +1,69 @@
 <%= link_to 'Back', home_path ,class:'btn btn-warning btn-sm' %>
-<h1>Your Friendship circle</h1>
 <div class="text-center">
-      <h4><%= image_tag(@user.avatar_url) if @user.avatar? %></h4><br>
-      <h4><%= current_user.name %></h4><br>
-      <h5>Email id:<%= current_user.email%></h5>
-      <h5>Location:<%= current_user.location%></h5>
-      <h5>Mobile no:<%= current_user.mobile%></h5>
-      <h5>About you:<%= current_user.about%></h5>
-</div>
-<div class="credential">
- <button type="button" class="btn btn-success btn-lg " data-toggle="modal" data-target="#myModal">view your friends profile</button>
-       
-<%= link_to "Search Friends",home_find_friends_path, class:'btn btn-success btn-lg control'%>
-</div>
-</div>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Profile information</h4>
-       </div>
-       <div class="modal-body">
-       <h4 class="text-primary text-center ">Profile Information </h4>
-       <div class="text-center">
-        <% for friendship in @user.friendships(:friend_id => params[:friend_id]) %>
-      <hr>
-      <h4><%= image_tag(friendship.friend.avatar_url) if friendship.friend.avatar? %></h4><br>
-      <h4><%= friendship.friend.name %></h4><br>
-      <h5>Email id:<%= friendship.friend.email%></h5>
-      <h5>Location:<%= friendship.friend.location%></h5>
-      <h5>Mobile no:<%= friendship.friend.mobile%></h5>
-      <h5>About you:<%= friendship.friend.about%></h5>
-      <%= link_to "remove", friendship, :method => :delete,class:'btn btn-danger btn-sm' %>
-      <hr>
-      <% end %>
-      </div>
+  <h4><%= image_tag(@user.avatar_url) if @user.avatar? %></h4><br>
+  <h2><%= current_user.name %></h><br>
+    <h5>Email id:<%= current_user.email%></h5>
+    <h5>Location:<%= current_user.location%></h5>
+    <h5>Mobile no:<%= current_user.mobile%></h5>
+    <h5>About you:<%= current_user.about%></h5>
+    <div>
+      <button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#myModal">view your friends profile</button>
+      <%= link_to "Search Friends",home_find_friends_path, class:'btn btn-primary btn-lg control'%>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Profile information</h4>
+        </div>
+        <div class="modal-body">
+         <h4 class="text-primary text-center ">Profile Information </h4>
+         <div class="text-center">
+          <% for friendship in @user.friendships(:friend_id => params[:friend_id]) %>
+          <hr>
+          <h4><%= image_tag(friendship.friend.avatar_url) if friendship.friend.avatar? %></h4><br>
+          <h4><%= friendship.friend.name %></h4><br>
+          <h5>Email id:<%= friendship.friend.email%></h5>
+          <h5>Location:<%= friendship.friend.location%></h5>
+          <h5>Mobile no:<%= friendship.friend.mobile%></h5>
+          <h5>About you:<%= friendship.friend.about%></h5>
+          <%= link_to "remove", friendship, :method => :delete,class:'btn btn-danger btn-sm' %>
+          <hr>
+          <% end %>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
- </div>
 </div>
- <h1>You are in circle of</h1>
+</div>
+<h2 class="text-center">You are in circle of</h2>
 <div class="container">
   <div class="row">
-      <div class="table-responsive">
-        <table class="table table-hover">
-           <caption class="bg-primary">you are the friend of </caption>
-          <thead>
-            <tr class="warning">
-            <th>Friends</th>
-            <th>location</th>
-            
-            </tr>
-          </thead>
-          <tbody id="myTable">
-            <% for user in @user.inverse_friends %>
-            <tr class="success">
-              <td><%=h user.name %> </td>
-              <td><%= user.location %></td>
-              
-              </tr>
-            <% end %>
-            </tbody>
-        </table>   
-        </div>
-      <div class="col-md-12 text-center">
+    <div class="table-responsive">
+      <table class="table table-hover">
+       <caption class="bg-primary">members in your circle</caption>
+       <thead>
+        <tr class="warning">
+          <th>Friends</th>
+          <th>location</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <% for user in @user.inverse_friends %>
+        <tr class="success">
+          <td><%=h user.name %> </td>
+          <td><%= user.location %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>   
+  </div>
+  <div class="col-md-12 text-center">
     <ul class="pagination pagination-lg pager control" id="myPager"></ul>
   </div>
 </div>

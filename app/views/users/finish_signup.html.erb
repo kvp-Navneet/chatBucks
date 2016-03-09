@@ -14,7 +14,16 @@
         <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com' %>
         <p class="help-block">Please confirm your email address. No spam.</p>
       </div>
-    </div>
+       <div class="field">
+       <%= f.label :password %> <i>(Type your Password)</i><br />
+       <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+       </div>
+
+       <div class="field">
+       <%= f.label :password_confirmation %><br />
+       <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+      </div>
+
     <div class="actions">
       <%= f.submit 'Continue', :class => 'btn btn-primary' %>
     </div>

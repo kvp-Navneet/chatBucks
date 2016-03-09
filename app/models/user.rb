@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+     include PublicActivity::Model
+     tracked
     TEMP_EMAIL_PREFIX = 'change@me'
     TEMP_EMAIL_REGEX = /\Achange@me/
     acts_as_voter

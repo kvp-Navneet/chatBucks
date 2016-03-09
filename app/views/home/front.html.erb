@@ -1,15 +1,21 @@
-<div class="row">
-	<div id="intro" class="col-lg-12 text-center">
-		<h1>chatBucks</h1>
-		<p>chatBucks is an open source social networking web application written on <%= fa_icon 'diamond' %> Ruby on Rails.it's source code is available on  <a href="#"><%= fa_icon 'github' %> Github</a>
-	   </p>
-	   <hr>
-			<div>
-				<%= link_to 'Sign up', new_user_registration_path, class:'btn btn-success btn-lg'%>
-				<%= link_to 'Sign in', user_session_path, class:'btn btn-primary btn-lg' %></div>
+<div id="headerwrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<h1>Welcome to chatBucks!</h1>
+				<p>chatBucks is an open source social networking web application written on <%= fa_icon 'diamond' %> Ruby on Rails.it's source code is available on 
+					<%=link_to 'github', "https://github.com/kvp-Navneet/chatBucks",class:"fa fa-github"%></p><hr>
+					<div class="orientation">
+						<%= link_to 'Sign up', new_user_registration_path, class:'btn btn-success btn-lg'%>
+						<%= link_to 'Sign in', user_session_path, class:'btn btn-success btn-lg' %>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<%= image_tag("ipad-hand.png", class: 'img-responsive') %>
+				</div>
 			</div>
 	</div>
-</div><br>
-<div class="container-fluid front">
-	<%= image_tag("bg.jpg", width: '100%') %>
 </div>
+	
+	
+	

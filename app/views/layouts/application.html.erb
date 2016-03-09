@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChatBucks</title>
-  <!-- Latest compiled and minified CSS -->
+  <title>chatBucks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +9,7 @@
   <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
    <div class="container">
     <div class="navbar-header">
       <%= link_to "ChatBucks", root_url, class: "navbar-brand" %>
@@ -24,25 +23,25 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#"><%= link_to 'My Profile', home_path %></a></li>
-              <li><a href="#"><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></a></li>
-              <li><a href="#"><%= link_to 'Edit Profile', edit_user_registration_path %></a>
+              <li><a href="#"><%= link_to 'Edit Profile', edit_user_path(current_user) %></a>
               </li>
               <li><a href="#"><%= link_to 'password settings', edit_user_registration_path %></a></li>
+              <li><a href="#"><%= link_to 'Account Deactivate', deactivate_user_path(current_user)  %></a></li>
+              <li><a href="#"><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></a></li>
             </ul>
           </li>
           <% else %>
           <li><a href="/home/about">About</a></li>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign in', user_session_path %></li>
+          <li><%= link_to 'New member?', new_user_registration_path %></li>
           <% end %>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="edit-form"> 
+  <div class="messages">
+    <h4 class="notice text-danger text-center"><%= notice %></h4>
+    <h4 class="alert text-danger text-center"><%= alert %></h4> 
   </div>
-  <h4 class="notice text-danger"><%= notice %></h4>
-  <h4 class="alert text-danger"><%= alert %></h4> 
   <%= yield %>
 </body>
 </html>
