@@ -140,7 +140,7 @@ margin:0 auto;
 .comments-show {
   margin-left: 25px;
 }
-========================================
+
 
 
 body {
@@ -178,7 +178,6 @@ a:hover{
   background-color: #A9BCF5;
 }
 
-/* Paragraph & Typographic */
 p {
     line-height: 28px;
     margin-bottom: 25px;
@@ -249,15 +248,7 @@ i {
   background-position: center center;
   min-height: 650px;
   width: 100%;
-  
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
     background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
