@@ -26,7 +26,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  #config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -47,12 +47,8 @@ Rails.application.configure do
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
-<<<<<<< HEAD
-  config.action_mailer.default_url_options = { host: 'chatbucks.herokuapp.com' }
-=======
-  config.action_mailer.default_url_options = { host: 'http://chatbucks.herokuapp.com' }
->>>>>>> d92cf16f5ccd15290e393c604a6170ae631544d7
 
+  config.action_mailer.default_url_options = { host: 'http://chatbucks.herokuapp.com' }
   config.action_mailer..delivery_method = :smtp
   config.action_mailer..perform_deliveries = true
 
