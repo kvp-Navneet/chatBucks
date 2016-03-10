@@ -150,8 +150,7 @@ a {
 body {
   background-color: #f2f2f2;
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
+
   color: #555;
   max-width: 100%;
   overflow-x: hidden;
@@ -160,32 +159,20 @@ body {
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
   color: #333;
 }
 
-h1 {
-  font-size: 40px;
-}
+
 
 h3 {
   color: #95a5a6;
-  font-weight: 400;
 }
 
 h4 {
   color: #95a5a6;
-  font-weight: 400;
-  font-size: 20px;
 } 
 a:hover{
   background-color: #A9BCF5;
-}
-
-p {
-  line-height: 28px;
-  margin-bottom: 25px;
-  font-size: 16px;
 }
 
 .centered {
@@ -226,7 +213,7 @@ select,option{
 }
 
 .form-control {
-  height: 42px;
+  height: 35px;
   font-size: 18px;
   width: 280px;
 }
