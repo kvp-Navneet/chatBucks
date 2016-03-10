@@ -14,14 +14,14 @@
  *= require jquery.ui.datepicker
  *= require dataTables/jquery.dataTables
  *= require bootstrap_and_overrides
-  */
-  ul li
-  {
+ */
+ ul li
+ {
 
   color:black;
-  }
+}
 a {
-    color: #121847;
+  color: #121847;
 }
 .activity {
   border-bottom: solid 1px #CCC;
@@ -32,106 +32,110 @@ a {
     padding-left: 5px;
   }
 }
- .messages
- {
-margin-top:50px;
-background-color: #3498db;
- }
- .btn-primary {
-    color: #FFF;
-    background-color: #2BAFED;
-    border-color: #D0DAE3;
+.messages
+{
+  margin-top:50px;
+  background-color: #3498db;
 }
- .comment{
+.btn-primary {
+  color: #FFF;
+  background-color: #2BAFED;
+  border-color: #D0DAE3;
+}
+.comment{
  margin:0 auto;
-  width:400px;
- }
- .front
- {
-margin:0 auto;
+ width:400px;
+}
+.front
+{
+  margin:0 auto;
 
- }
- .event input
- {
-margin:0 auto;
+}
+.event input
+{
+  margin:0 auto;
 
- }
- .side
- {
+}
+.side
+{
 
  margin-left:15px;
- }
- .edit-form
- {
+}
+.edit-form
+{
 
- 	margin-top:60px;
- }
- .feed
- {
+  margin-top:60px;
+}
+.feed
+{
 
- 	text-align: center;
- }
- 
- .credentials
- {
+  text-align: center;
+}
 
- 	margin-left:70px;
- }
+.credentials
+{
 
- .margin
- {
- 	margin-top:100px;
- }
- .control
- {
- 	width:180px;
- 	margin-bottom:0px;
- 	margin-top:0px;
- }
- .status
- {
- 	margin:0 auto;
- 	width:500px;
- }
-  .status textarea
- {
+  margin-left:70px;
+}
+
+.margin
+{
+  margin-top:100px;
+}
+.control
+{
+  width:180px;
+  margin-bottom:0px;
+  margin-top:0px;
+}
+.status
+{
+  margin:0 auto;
+  width:500px;
+}
+.status textarea
+{
 
   width:500px;
- }
- #updates
- {
- 	float:right;
- 	margin-right: 15px;
- }
- .post
- {
-    color:black;
- 	margin:0 auto;
- 	width:600px;
- }
- .edit-profile
- {
- 	margin: 0 auto;
- 	width:400px;
- }.comments-header {
+}
+#updates
+{
+  float:right;
+  margin-right: 15px;
+}
+.post
+{
+  color:black;
+  margin:0 auto;
+  width:600px;
+}
+.edit-profile
+{
+  margin: 0 auto;
+  width:400px;
+}
+.comments-header {
   border-bottom: 1px dotted gray;
   margin-bottom: 10px;
 }
 
-.comments-container {
- p {
-    margin-bottom: 0px;
-  }
-  .comment-nav {
-    margin-left: 5px;
-    margin-bottom: 10px
-    a {
-      font-size: 10px;
-      font-weight: bold;
-      color: #888;
-    }
-  }
+.comments-container  p
+{
+
+  margin-bottom: 0px;
 }
+
+.comment-nav {
+  margin-left: 5px;
+  margin-bottom: 10px
+}
+.comment-nav a {
+  font-size: 10px;
+  font-weight: bold;
+  color: #888;
+}
+
+
 
 .reply-form {
   display: none;
@@ -145,19 +149,19 @@ margin:0 auto;
 
 body {
   background-color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    color: #555;
-    max-width: 100%;
-    overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #555;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    color: #333;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #333;
 }
 
 h1 {
@@ -179,22 +183,22 @@ a:hover{
 }
 
 p {
-    line-height: 28px;
-    margin-bottom: 25px;
-    font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 25px;
+  font-size: 16px;
 }
 
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
- hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 select,option{
 
@@ -248,8 +252,8 @@ i {
   background-position: center center;
   min-height: 650px;
   width: 100%;
-    background-size: 100%;
-    background-size: cover;
+  background-size: 100%;
+  background-size: cover;
 }
 
 #headerwrap h1 {
