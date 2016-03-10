@@ -36,11 +36,11 @@
              created&nbsp<%= time_ago_in_words(event.created_at)  %> &nbsp ago
            </h5>
            <br>
-           <%= link_to like_event_path(event), method: :put do %>
+           <%= link_to like_event_path(event), method: :put, class:'counter' do %>
            <%= fa_icon 'thumbs-up' %>
            <%= event.get_upvotes.size %>
            <% end %>
-           <%= link_to dislike_event_path(event), method: :put do %>
+           <%= link_to dislike_event_path(event), method: :put, class:'counter' do %>
            <%= fa_icon 'thumbs-down' %>
            <%= event.get_downvotes.size %>
            <% end %>

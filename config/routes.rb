@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :activities
   resources :events do 
   member do
     put "like", to: "events#upvote"

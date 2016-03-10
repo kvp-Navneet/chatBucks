@@ -32,7 +32,6 @@ gem 'public_activity'
 gem 'carrierwave'
 gem "mini_magick"
 gem "twitter-bootstrap-rails"
-#gem 'bootstrap-typeahead-rails'
 gem 'auto_html'
 gem "letter_opener", :group => :development
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
