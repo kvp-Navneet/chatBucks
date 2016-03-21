@@ -9,10 +9,14 @@ class PostsController < ApplicationController
   end
   def create
     @post = current_user.posts.new(post_params)
-    if @post.save
-      redirect_to root_path
-  else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+    respond_to do |format|
+     if @post.save
+      format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+      format.json { render :show, status: :created, location: @home }
+     else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -27,7 +31,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to root_path }
+    format.html { redirect_to root_path }
     end
   end
   def upvote 

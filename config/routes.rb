@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  resources :events do 
-  member do
-    put "like", to: "events#upvote"
-    put "dislike", to: "events#downvote"
-  end
-end
+  resources :events 
   resources :comments 
   resources :posts do 
   member do
@@ -25,12 +20,10 @@ end
   authenticated :user do
     root to: 'home#index', as: 'home'
     #root to:  'home#front',as: 'home'
-
   end
   unauthenticated :user do
     root 'home#front'
   end
-
   get '/home/myfriend'
   get '/home/about'
   get '/home/find_friends'
