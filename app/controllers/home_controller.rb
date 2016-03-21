@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @post = Post.new
     @activities = Post.where(:user_id => current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
-    @event = Event.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 5)
+    @event = Event.where(:user_id => current_user.id).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     #@friends = @user.all_following.unshift(@user)
     #@activities = PublicActivity::Activity.where(owner_id: @friends).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
