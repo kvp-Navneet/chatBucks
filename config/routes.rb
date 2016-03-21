@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
-  resources :events 
+  resources :events  do
+    member do 
+      put "like", to: "events#upvote"
+      put "dislike", to: "events#downvote"
+    end
+  end
   resources :comments 
   resources :posts do 
-  member do
-    put "like", to: "posts#upvote"
-    put "dislike", to: "posts#downvote"
+    member do
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
+    end
   end
-end
   resources :friendships
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks',  registrations: "users/registrations" }
-    resources :users do
+  resources :users do
     member do
       get :deactivate
     end
   end
-   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   authenticated :user do
