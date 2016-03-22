@@ -13,7 +13,9 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path
     else
-      render 'new', notice: @event.errors.full_messages.first
+      #render 'new', 
+    redirect_to root_path, notice: 'Event name can not be blank.' 
+      #format.json { render json: @post.errors, status: :unprocessable_entity }
     end
   end
 

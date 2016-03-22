@@ -1,0 +1,5 @@
+$('.like').bind('ajax:success', function() {
+	//console.log("<%=@post.get_upvotes.size.to_s%>");
+  $('.ncount-<%= @post.id %>').html('<%=escape_javascript @post.get_downvotes.size.to_s %>');
+  $('.vcount-<%= @post.id %>').html('<%=escape_javascript @post.get_upvotes.size.to_s %>');
+});

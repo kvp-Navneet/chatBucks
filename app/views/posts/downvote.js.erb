@@ -1,0 +1,5 @@
+$('.dislike').bind('ajax:success', function() {
+	$(this).html('a');
+ 	$('.ncount-<%= @post.id %>').html('<%=escape_javascript @post.get_downvotes.size.to_s %>');
+ 	$('.vcount-<%= @post.id %>').html('<%=escape_javascript @post.get_upvotes.size.to_s %>');
+});

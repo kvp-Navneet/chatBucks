@@ -126,6 +126,7 @@ $(document).ready(function(){
     $(this).closest('.comment').find('.reply-form').toggle();
     return
   });
+
  if ($('.pagination').length) {
     $(window).scroll(function() {
       var url = $('.pagination .next_page').attr('href');
@@ -137,4 +138,22 @@ $(document).ready(function(){
     });
     return $(window).scroll();
   }
+  $('#like').click(function(){
+   $.ajax({
+      url: 'http://localhost:3000' + $(current_post).attr('post_id') +'/like',
+        type: 'PUT',
+        success: function(){
+          
+        }
+      });
+   });
+  $('#dislike').click(function(){
+     $.ajax({
+      url: 'http://localhost:3000' + $(current_post).attr('post_id') +'/dislike',
+        type: 'PUT',
+        success: function(){
+          
+        }
+      });
+   });
 });

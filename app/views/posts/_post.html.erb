@@ -30,12 +30,12 @@
   <div class="actions">
     <div class="row">
       <div class="col-xs-6 like">
-        <%= link_to like_post_path(post), method: :put do %><%= fa_icon 'thumbs-up' %>
-        <%= post.get_upvotes.size %>
+        <%= link_to like_post_path(post),method: :put, remote: true, class: 'like' do %><%= fa_icon 'thumbs-up' %>
+        <span class="vcount-<%= post.id %>"><%= post.get_upvotes.size %></span>
         <% end %>
-        <%= link_to dislike_post_path(post), method: :put do %>
+        <%= link_to dislike_post_path(post),method: :put,  remote: true, class: 'dislike' do %>
         <%= fa_icon 'thumbs-down' %>
-        <%= post.get_downvotes.size %>
+        <span class="ncount-<%= post.id %>"><%= post.get_downvotes.size %></span>
         <% end %>
       </div>
       </div>

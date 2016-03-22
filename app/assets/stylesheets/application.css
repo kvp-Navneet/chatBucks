@@ -34,8 +34,8 @@ a {
 }
 .messages
 {
-  margin-top:50px;
-  background-color: #3498db;
+
+  color: #ffffff; 
 }
 .btn-primary {
   color: #FFF;

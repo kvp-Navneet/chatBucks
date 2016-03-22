@@ -36,11 +36,11 @@
              created&nbsp<%= time_ago_in_words(event.created_at)  %> &nbsp ago
            </h5>
            <br>
-           <%= link_to like_event_path(event), method: :put, class:'counter' do %>
+           <%= link_to like_event_path(event),:id => "like", method: :put, class:'counter' do %>
            <%= fa_icon 'thumbs-up' %>
            <%= event.get_upvotes.size %>
            <% end %>
-           <%= link_to dislike_event_path(event), method: :put, class:'counter' do %>
+           <%= link_to dislike_event_path(event),:id => "dislike", method: :put, class:'counter' do %>
            <%= fa_icon 'thumbs-down' %>
            <%= event.get_downvotes.size %>
            <% end %>
@@ -73,10 +73,10 @@
       <h3> <%= current_user.name %></h3>
       <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
       created&nbsp<%= time_ago_in_words(activity.created_at)  %> &nbsp ago<br>
-      <%= link_to like_post_path(activity), method: :put do %><%= fa_icon 'thumbs-up' %>
+      <%= link_to like_post_path(activity),:id => "like", method: :put do %><%= fa_icon 'thumbs-up' %>
       <%= activity.get_upvotes.size %>
       <% end %>
-      <%= link_to dislike_post_path(activity), method: :put do %>
+      <%= link_to dislike_post_path(activity),:id => "dislike", method: :put do %>
       <%= fa_icon 'thumbs-down' %>
       <%= activity.get_downvotes.size %><br>
        <span class="comments-count"><%= activity.comments_count%>&nbsp<%=link_to 'Comment', post_path(activity) %></span>
