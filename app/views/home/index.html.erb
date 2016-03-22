@@ -70,8 +70,9 @@
     <div class="well" id="activities">
       <br>
       <% @activities.each do |activity| %>
-      <h3> <%= current_user.name %></h3>
-      <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
+      <h4> <%= current_user.name %></h4>
+      <h3 class="text-primary"><%= activity.content %></h3>
+      <%= image_tag(activity.attachment_url) if activity.attachment? %>
       created&nbsp<%= time_ago_in_words(activity.created_at)  %> &nbsp ago<br>
       <%= link_to like_post_path(activity),class:  "post_like", method: :put, remote: true do %><%= fa_icon 'thumbs-up' %>
       <span class="vcount-<%= activity.id %>"><%= activity.get_upvotes.size %></span>
@@ -87,7 +88,7 @@
         <% fa_icon 'pencil' %>
         <% end %>
         <%= link_to 'Delete', activity,class:'btn  btn-sm fa fa-trash-o', method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
+      </div><hr>
       <% end %>
      </div>
     <%= will_paginate @activities %>
