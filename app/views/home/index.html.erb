@@ -73,12 +73,12 @@
       <h3> <%= current_user.name %></h3>
       <%= activity.content %><br><%= image_tag(activity.attachment_url) if activity.attachment? %></h5>
       created&nbsp<%= time_ago_in_words(activity.created_at)  %> &nbsp ago<br>
-      <%= link_to like_post_path(activity),:id => "like", method: :put do %><%= fa_icon 'thumbs-up' %>
-      <%= activity.get_upvotes.size %>
+      <%= link_to like_post_path(activity),class:  "post_like", method: :put, remote: true do %><%= fa_icon 'thumbs-up' %>
+      <span class="vcount-<%= activity.id %>"><%= activity.get_upvotes.size %></span>
       <% end %>
-      <%= link_to dislike_post_path(activity),:id => "dislike", method: :put do %>
+      <%= link_to dislike_post_path(activity),class: "post_dislike", method: :put, remote: true do %>
       <%= fa_icon 'thumbs-down' %>
-      <%= activity.get_downvotes.size %><br>
+      <span class="ncount-<%= activity.id %>"><%= activity.get_downvotes.size %></span><br>
        <span class="comments-count"><%= activity.comments_count%>&nbsp<%=link_to 'Comment', post_path(activity) %></span>
       <% end %>
       <%#=link_to 'Comment', post_path(activity), class:'btn btn-warning btn-sm' %> 

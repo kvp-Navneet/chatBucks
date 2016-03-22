@@ -29,11 +29,11 @@
 <% if user_signed_in? %>
   <div class="actions">
     <div class="row">
-      <div class="col-xs-6 like">
-        <%= link_to like_post_path(post),method: :put, remote: true, class: 'like' do %><%= fa_icon 'thumbs-up' %>
+      <div class="col-xs-6">
+        <%= link_to like_post_path(post),method: :put, remote: true, class: 'post_like' do %><%= fa_icon 'thumbs-up' %>
         <span class="vcount-<%= post.id %>"><%= post.get_upvotes.size %></span>
         <% end %>
-        <%= link_to dislike_post_path(post),method: :put,  remote: true, class: 'dislike' do %>
+        <%= link_to dislike_post_path(post),method: :put,  remote: true, class: 'post_dislike' do %>
         <%= fa_icon 'thumbs-down' %>
         <span class="ncount-<%= post.id %>"><%= post.get_downvotes.size %></span>
         <% end %>
