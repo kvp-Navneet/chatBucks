@@ -92,6 +92,10 @@ padding-left: 160px;
 {
   margin-top:100px;
 }
+.post-head
+{
+  color:white;
+}
 .control
 {
   width:180px;
@@ -106,7 +110,7 @@ padding-left: 160px;
 .status textarea
 {
 
-  width:500px;
+  width:550px;
 }
 #updates
 {
